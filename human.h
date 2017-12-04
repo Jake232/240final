@@ -8,7 +8,8 @@
  * Output: None
  */
 
-
+#ifndef HUMAN_H
+#define HUMAN_H
 #include <cstdlib>
 #include <iostream>
 
@@ -34,6 +35,7 @@ public:
 	int y;
 
 };
+#endif /* HUMAN_H */
 	
 	
  

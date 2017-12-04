@@ -7,6 +7,8 @@
  * Input: None
  * Output: None
  */
+#ifndef ZOMBIE_H
+#define ZOMBIE_H
 #include <cstdlib>
 #include <iostream>
 
@@ -21,3 +23,4 @@ public:
 	~zombie();
 	bool move(char);
 };
+#endif /* ZOMBIE>H */

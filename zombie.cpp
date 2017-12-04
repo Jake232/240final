@@ -8,9 +8,10 @@
  * Output: None
  */
 
+# include "human.h"
 # include "zombie.h"
 
-zombie::zombie();
+zombie::zombie()
 {
 x=0;
 y=0;
@@ -25,8 +26,8 @@ dead=_dead;
 
 zombie::~zombie()
 {
- x=NULL;
- y=NULL;
+ x=0;
+ y=0;
 }
 
 bool zombie::move(char a)

@@ -9,6 +9,7 @@
  */
 
 # include "human.h"
+# include "zombie.h"
 
 human::human()
 {
