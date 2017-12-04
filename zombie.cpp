@@ -1,1 +1,38 @@
+/* 
+ * File:   zombie.cpp
+ * Author: Michael McCallum
+ * 
+ * Due on November 17, 2017, 11:55 PM
+ * Function:Body file for zombie
+ * Input: None
+ * Output: None
+ */
 
+# include "zombie.h"
+
+zombie::zombie();
+{
+x=0;
+y=0;
+}
+
+zombie::zombie(int _x, int _y, bool _dead)
+{
+x=_x;
+y=_y;
+dead=_dead;
+}
+
+zombie::~zombie()
+{
+ x=NULL;
+ y=NULL;
+}
+
+bool zombie::move(char a)
+{
+if(a=='z')
+return true;
+else
+return false;
+}
