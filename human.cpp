@@ -13,8 +13,8 @@
 
 human::human()
 {
- x=0;
- y=0;
+ x=-1;
+ y=-1;
  dead = false;
 }
 
@@ -34,28 +34,28 @@ human::~human()
 
 void human::setX(int _x)
 {
- x=_x;
+ this->x= _x;
 }
 
 int human::getX()
 {
- return x;
+ return this->x;
 }
 
 void human::setY(int _y)
 {
- x=_y;
+ this->y = _y;
 }
 
 int human::getY()
 {
- return y;
+ return this->y;
 }
 
 bool human::move(char a)
 {
-if(a == 'h')
-return false;
+if(a == 'H')
+	return false;
 else
-return true;
+	return true;
 }
