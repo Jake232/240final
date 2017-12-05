@@ -3,8 +3,9 @@ using namespace std;
 #include "zombie.cpp"
 class world{
 	public:
-		void move(human);
-		void move(zombie);
+		world();
+		void move(human&);
+		void move(zombie&);
 		void print();
 		void setUp();
 		bool anyHumansHere(int,int);
