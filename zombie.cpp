@@ -13,8 +13,8 @@
 
 zombie::zombie()
 {
-x=0;
-y=0;
+x=-1;
+y=-1;
 }
 
 zombie::zombie(int _x, int _y, bool _dead)
@@ -32,8 +32,8 @@ zombie::~zombie()
 
 bool zombie::move(char a)
 {
-if(a=='z')
-return true;
+if(a=='Z')
+	return true;
 else
-return false;
+	return false;
 }
