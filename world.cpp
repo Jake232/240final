@@ -22,9 +22,10 @@ world::world(){
 	Humans.resize(8);
 	Zombies.resize(9);
 }
-/*move function
- * takes in the memory address of h of type human
- * 
+/*Move Function
+ * Takes in a human
+ * Generates a random move
+ * Based on what the move function in human it Moves, stays in place, or fights a zombie
  */
 void world::move(human &h){
 		
@@ -94,6 +95,12 @@ void world::move(human &h){
 	}
 }
 
+/*fight
+ * Takes in a human and two integers
+ * It locates the human and zombie in their respected arrays
+ * Once found if the zombies attack is less than the humans it is defeated
+ * Otherwise the human is turned into a zombie
+ */ 
 void world::fight(human &h, int x, int y){
 	cout << "FIGHT!" << endl;
 	zombie temp;
@@ -130,14 +137,15 @@ void world::fight(human &h, int x, int y){
 		removeZombie(temp,zPos);
 }
 /*zombify function
- * takes in memory address of human type h
- * if the human loses the battle the human is taken off the grid and a new zombie is added to the grid
+ * Takes in a human
+ * Removes the human from the array and places a zomby in the place of the human with all of its old data
  */
 void world::zombify(human &h){
 	cout << "A human has turned into a zombie" << endl;
 	
 	int x = h.getX();
 	int y = h.getY();
+	int a = h.getAttack();
 	
 	h.setX(-1);
 	h.setY(-1);
@@ -147,13 +155,14 @@ void world::zombify(human &h){
 	
 	Zombies[numZombies].setX(x);
 	Zombies[numZombies].setY(y);
+	Zombies[numZombies].setAttack(a);
 	numZombies++;
 	
 	World[x][y]='Z';
 }
 /*removeZombie
- * takes in memory address of z and an integer i
- * if a zombie loses a fight between the human and zombie then it is removed from the grid by setting it's values to -1
+ * Takes in a zombie and an integer i
+ * If a zombie loses a fight between the human and zombie then it is removed from the grid by setting it's values to -1
  */
 void world::removeZombie(zombie &z, int i){
 	cout << "A zombie has been defeated" << endl;
@@ -163,6 +172,11 @@ void world::removeZombie(zombie &z, int i){
 		z.setY(-1);
 }
 
+/*Move Function
+ * Takes in a zombie
+ * Generates a random move
+ * Based on what the move function in zombie it Moves, stays in place, or fights a zombie
+ */
 void world::move(zombie &z){
 	int direction = rand()&4-1;
 		int x = z.getX();
@@ -225,6 +239,11 @@ void world::move(zombie &z){
 	}
 }
 
+/*fight
+ * Takes in a zombie and four integers
+ * It locates the human in its array
+ * Once found it runs the fight function created above
+ */ 
 void world::fight(zombie &z, int hx, int hy, int zx, int zy){
 	human temp;
 	int hPos=-1;
@@ -243,8 +262,9 @@ void world::fight(zombie &z, int hx, int hy, int zx, int zy){
 	}
 }
 /*print function
- * writes out characters to "create" the grid
- * creates an 8 by 8 grid with the characters and is filled with the randomized human and zombie characters
+ * Takes in no parameters
+ * Prints the contents of the World grid
+ * Returns nothing
  */
 void world::print(){
 	cout << "+---+---+---+---+---+---+---+---+" << endl;
@@ -258,8 +278,10 @@ void world::print(){
 	cout << endl;
 }
 /*setUp function
- * sets up where the characters for h and z will be on the grid
- * also sets the attack for each human and zombie
+ * Takes in no parameters
+ * Sets up where the characters for h and z will be on the grid
+ * Also sets the attack for each human and zombie
+ * Returns nothing
  */
 void world::setUp(){
 	for(int i=0; i<8; i++){
@@ -324,7 +346,8 @@ bool world::anyZombiesHere(int x, int y){
 return false;
 }
 /*refresgWorld function
- * refreshes the world for the next day(iteration)
+ * Iterates through the world and checks if any humans or zombies have that x y coordinate
+ * If so it places a H or Z in that spot repectivly
  */
 void world::refreshWorld(){
 	for(int i=0; i<8; i++){
@@ -338,5 +361,3 @@ void world::refreshWorld(){
 		}
 	}
 }
-
-
