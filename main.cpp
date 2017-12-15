@@ -15,8 +15,12 @@
 #include "world.cpp"
 
 int main(int argc, char **argv){
+//Allows it to have new random numbers on each run
 srand(time(NULL));
+
+//Creates variable god which can call all of the world functions
 world god;
+
 //Variables to check if any humans are alive
 bool allDead = false;
 
@@ -32,7 +36,7 @@ int day = 0;
 //Creates the board and places 8 humans a zombie
 god.setUp();
 
-//While theres at least one human alive
+//While theres at least one human or zombie alive and tthe user has not chose to exit
 while(!allDead && !uexit && !noZombies){
 	cout << "Day: " << day << endl;
 
@@ -46,6 +50,7 @@ while(!allDead && !uexit && !noZombies){
 			god.move(god.Humans[i]);
 	}
 	
+	//Refreshes the world and wiats before moving zombies
 	god.refreshWorld();
 	usleep(0.25*1000000);
 	
@@ -71,18 +76,22 @@ while(!allDead && !uexit && !noZombies){
 		}
 	}
 	
-	//Ask for user input
+	//Uncomment if you want user input between each day
 	/*cout << "Go to next day?(y,n)" << endl;
 	char user;
 	cin >> user;
 	if(user == 'n')
 		uexit=true;*/
 	
+	//Increases the day count
 	++day;
+	
+	//Prints a bunch of new lines to look like the board is just refreshing
 	for(int i=0; i<100; i++)
 		cout << endl;
 }
 
+//If all the humans are dead
 if(allDead){
 cout << "Number of days to kill all humans: " << day << endl;
 cout << endl << "Final Board" << endl;
@@ -90,6 +99,7 @@ god.refreshWorld();
 god.print();
 }
 
+//If all of the zombies have been defeated
 if(noZombies){
 cout << "Number of days to kill all zombies: " << day << endl;
 cout << endl << "Final Board" << endl;
@@ -98,4 +108,3 @@ god.print();
 }
 
 }
-
