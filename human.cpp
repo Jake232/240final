@@ -70,7 +70,7 @@ int human::getY()
 }
 /*move function
  * takes in a character
- * if the space in the grid is open, it allows the human to move, if the space is occupied by a zombo, it triggers the attack system
+ * if the space in the grid is open, it allows the human to move, if the space is occupied by a zombie, it triggers the attack system
 */
 int human::move(char a){
 	if(a==' ')
