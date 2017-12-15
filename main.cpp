@@ -1,6 +1,17 @@
+/* 
+ * File:   main.cpp
+ * Author: Jake Braswell and Michael McCallum
+ * 
+ * Due on December 15th, 2017, 11:55 PM
+ * Function: 
+ * Input: None
+ * Output: None
+ */
+
 #include<ctime>
 #include<unistd.h>
 #include<stdlib.h>
+
 #include "world.cpp"
 
 int main(int argc, char **argv){
@@ -87,3 +98,4 @@ god.print();
 }
 
 }
+

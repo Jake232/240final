@@ -1,8 +1,8 @@
 /* 
  * File:   human.h
- * Author: Michael McCallum
+ * Author: Jake Braswell and Michael McCallum
  * 
- * Due on November 17, 2017, 11:55 PM
+ * Due on December 15th, 2017, 11:55 PM
  * Function:Header file for human
  * Input: None
  * Output: None
@@ -15,7 +15,10 @@
 
 
 using namespace std;
-
+/*prototypes for the human class
+ * sets all of the prototypes for the human class
+ * 
+*/
 class human
 {
 public:
@@ -40,3 +43,4 @@ public:
 	
 	
  
+

@@ -1,15 +1,31 @@
+/* 
+ * File:   world.cpp
+ * Author: Jake Braswell and Michael McCallum
+ * 
+ * Due on December 15th, 2017, 11:55 PM
+ * Function:Creates a node with data and a link to the next node to be used in the linked list
+ * Input: None
+ * Output: None
+ */
 #include "world.h"
 #include<vector>
 #include<stdlib.h>
 #include<iostream>
 using namespace std;
+/*Default construtor for World class
+ * sets numHumans and numZombies default to 0
+ * sets the original size of humans to 8 and zombies to 9
+ */
 world::world(){
 	numHumans = 0;
 	numZombies = 0;
 	Humans.resize(8);
 	Zombies.resize(9);
 }
-
+/*move function
+ * takes in the memory address of h of type human
+ * 
+ */
 void world::move(human &h){
 		
 		if(!h.dead){
@@ -113,7 +129,10 @@ void world::fight(human &h, int x, int y){
 	else
 		removeZombie(temp,zPos);
 }
-
+/*zombify function
+ * takes in memory address of human type h
+ * if the human loses the battle the human is taken off the grid and a new zombie is added to the grid
+ */
 void world::zombify(human &h){
 	cout << "A human has turned into a zombie" << endl;
 	
@@ -132,7 +151,10 @@ void world::zombify(human &h){
 	
 	World[x][y]='Z';
 }
-
+/*removeZombie
+ * takes in memory address of z and an integer i
+ * if a zombie loses a fight between the human and zombie then it is removed from the grid by setting it's values to -1
+ */
 void world::removeZombie(zombie &z, int i){
 	cout << "A zombie has been defeated" << endl;
 		Zombies[i].x=-1;
@@ -220,7 +242,10 @@ void world::fight(zombie &z, int hx, int hy, int zx, int zy){
 		fight(temp, zx, zy);
 	}
 }
-
+/*print function
+ * writes out characters to "create" the grid
+ * creates an 8 by 8 grid with the characters and is filled with the randomized human and zombie characters
+ */
 void world::print(){
 	cout << "+---+---+---+---+---+---+---+---+" << endl;
 	for(int i=0; i<8; i++){
@@ -232,7 +257,10 @@ void world::print(){
 	}
 	cout << endl;
 }
-
+/*setUp function
+ * sets up where the characters for h and z will be on the grid
+ * also sets the attack for each human and zombie
+ */
 void world::setUp(){
 	for(int i=0; i<8; i++){
 		for(int j=0; j<8; j++){
@@ -273,7 +301,10 @@ void world::setUp(){
 		}
 	}
 }
-
+/*boolean type anyHumansHere function
+ * take in grid integers for x and y
+ * this function checks to see if a human occupies a spot on the grid
+ */
 bool world::anyHumansHere(int x, int y){
 	for(int i=0; i<8; i++){
 		if(Humans[i].getX()==x && Humans[i].getY()==y)
@@ -281,7 +312,10 @@ bool world::anyHumansHere(int x, int y){
 	}
 return false;
 }
-
+/*boolean type anyZombiessHere function
+ * take in grid integers for x and y
+ * this function checks to see if a zombie occupies a spot on the grid
+ */
 bool world::anyZombiesHere(int x, int y){
 	for(int i=0; i<9; i++){
 		if(Zombies[i].getX()==x && Zombies[i].getY()==y)
@@ -289,7 +323,9 @@ bool world::anyZombiesHere(int x, int y){
 	}
 return false;
 }
-
+/*refresgWorld function
+ * refreshes the world for the next day(iteration)
+ */
 void world::refreshWorld(){
 	for(int i=0; i<8; i++){
 		for(int j=0; j<8; j++){
@@ -302,4 +338,5 @@ void world::refreshWorld(){
 		}
 	}
 }
+
 

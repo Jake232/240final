@@ -1,8 +1,8 @@
 /* 
  * File:   zombie.h
- * Author: Michael McCallum
+ * Author: Jake Braswell and Michael McCallum
  * 
- * Due on November 17, 2017, 11:55 PM
+ * Due on December 15th, 2017, 11:55 PM
  * Function:Header file for zombie
  * Input: None
  * Output: None
@@ -14,7 +14,9 @@
 
 
 using namespace std;
-
+/*prototypes for the zombie class
+ * sets prototypes for the zombie class and inherits others from the human class
+ */
 class zombie: public human
 {
 public:
@@ -25,3 +27,4 @@ public:
 	int attack;
 };
 #endif /* ZOMBIE>H */
+
